@@ -1,33 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Menu from "./Menu";
 
 const Timer = () => {
   const [state, setState] = useState<boolean>(false);
   const [minute, setMinute] = useState<null | number>(null);
-  const [second, setSecond] = useState<number>(60);
-
-  useEffect(() => {
-    if (state && minute) {
-      let intervalId: NodeJS.Timeout;
-      let secondTime: number = second
-      let minuteTime: number = minute
-
-      if (second > 0) {
-        intervalId = setInterval(() => {
-          setSecond(secondTime--);
-        }, 1000);
-      } else {
-        clearInterval(intervalId);
-        setSecond(59);
-        setMinute(minuteTime--);
-      }
-    }
-  }, [state, second, minute]);
+  // const [second, setSecond] = useState<number>(60);
 
   return (
     <div className="font-bold w-full flex flex-wrap justify-center gap-y-12">
       <Menu setMinute={setMinute} />
-      <span className="text-9xl text-white text-center w-full">{`${minute} : ${second}`}</span>
+      <span className="text-9xl text-white text-center w-full">{`${minute} : ${60}`}</span>
       <button
         onClick={() => {
           setState(!state);

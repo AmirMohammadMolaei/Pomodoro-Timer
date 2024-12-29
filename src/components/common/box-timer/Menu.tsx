@@ -7,11 +7,11 @@ interface MenuItemProps {
   minute: number;
 }
 
-const Menu = ({
-  setMinute,
-}: {
-  setMinute: React.Dispatch<React.SetStateAction<number | null>>;
-}) => {
+interface MenuProps {
+  setMinute: (ev: number) => void;
+}
+
+const Menu = ({ setMinute }: MenuProps) => {
   const [menuState, setMenuState] = useState(0);
   const dispatch = useDispatch();
 

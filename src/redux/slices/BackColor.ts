@@ -1,9 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type Colors = "#38858a" | "#ba4949" | "#397097";
+enum Colors {
+  "Pomodoro" = "#ba4949",
+  "Short Break" = "#38858a",
+  "Long Break" = "#397097"
+}
 
 interface ColorState {
-  color: Colors;
+  color: string;
 }
 
 const initialState: ColorState = {
@@ -16,11 +20,11 @@ const BackColor = createSlice({
   reducers: {
     changeColor: (state, action) => {
       if (action.payload == 0) {
-        state.color = "#ba4949";
+        state.color = Colors["Pomodoro"]
       } else if (action.payload == 1) {
-        state.color = "#38858a";
+        state.color = Colors["Short Break"]
       } else if (action.payload == 2) {
-        state.color = "#397097";
+        state.color = Colors["Long Break"]
       }
     },
   },
